@@ -1,0 +1,9 @@
+{
+  "name": "RetroPlay",
+  "description": "A professional retro gaming platform with a Netflix-style interface, integrated emulators, and cloud saves. Fliperama style.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

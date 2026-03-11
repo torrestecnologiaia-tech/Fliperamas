@@ -1,0 +1,79 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Console": {
+      "title": "Console",
+      "description": "Retro gaming console information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "company": { "type": "string" },
+        "year": { "type": "integer" },
+        "icon": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "Game": {
+      "title": "Game",
+      "description": "Retro game information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "consoleId": { "type": "string" },
+        "consoleName": { "type": "string" },
+        "coverUrl": { "type": "string" },
+        "romUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "popularity": { "type": "integer" },
+        "category": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "consoleId", "romUrl"]
+    },
+    "SaveState": {
+      "title": "SaveState",
+      "description": "Game save states for users",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "gameId": { "type": "string" },
+        "saveData": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "gameId", "saveData"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/consoles/{consoleId}": {
+      "schema": "Console",
+      "description": "Console metadata"
+    },
+    "/games/{gameId}": {
+      "schema": "Game",
+      "description": "Game library"
+    },
+    "/saveStates/{saveId}": {
+      "schema": "SaveState",
+      "description": "User game saves"
+    }
+  }
+}
